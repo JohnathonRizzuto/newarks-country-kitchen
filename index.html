@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newark's Country Kitchen — Home-Cooked Comfort in Newark, IL</title>
+<meta name="description" content="Family-owned diner in Newark, IL serving home-cooked breakfast, lunch & dinner since 1990. Open Tuesday through Sunday. Walk in, sit down, eat well.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF5EC;
+  --surface:#FFFCF5;
+  --surface-2:#F5EBD8;
+  --primary:#3A2014;
+  --primary-soft:#5C3826;
+  --text:#2C1810;
+  --muted:#7A604E;
+  --border:rgba(58,32,20,0.14);
+  --accent:#B23A2A;
+  --accent-hover:#902C1E;
+  --secondary:#5C7A4E;
+  --gold:#C8954A;
+  --overlay:rgba(58,32,20,0.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  font-size:1.0625rem;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(178,58,42,0.04) 0%, transparent 55%),
+    radial-gradient(circle at 85% 70%, rgba(92,122,78,0.04) 0%, transparent 55%);
+}
+img{max-width:100%;display:block}
+.container{max-width:1240px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.025em;color:var(--primary);line-height:1.15}
+h1{font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:700}
+h2{font-size:clamp(2rem,3.6vw,3.2rem)}
+h3{font-size:clamp(1.35rem,2vw,1.65rem)}
+p{color:var(--muted)}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.1rem 0;
+  transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+  background:rgba(251,245,236,0.55);
+  backdrop-filter:blur(6px);
+}
+header.scrolled{
+  background:rgba(251,245,236,0.92);
+  backdrop-filter:blur(14px) saturate(180%);
+  padding:0.7rem 0;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 4px 24px rgba(58,32,20,0.06);
+}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:1.5rem}
+.logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;color:var(--primary);letter-spacing:-0.02em;display:flex;align-items:center;gap:.55rem}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:var(--surface);font-family:'Fraunces',serif;font-weight:700;font-size:1rem;box-shadow:0 4px 10px rgba(178,58,42,0.3)}
+.nav-links{display:flex;gap:2.1rem;align-items:center}
+.nav-links a{font-size:.95rem;font-weight:500;color:var(--primary);position:relative;padding:.25rem 0;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:width .3s ease}
+.nav-links a:hover::after{width:100%}
+.socials-row{display:flex;gap:.55rem;align-items:center}
+.socials-row a{width:34px;height:34px;border-radius:50%;background:var(--surface-2);display:inline-flex;align-items:center;justify-content:center;transition:all .25s ease}
+.socials-row a:hover{background:var(--accent);transform:translateY(-2px)}
+.socials-row a:hover svg{stroke:var(--surface);fill:var(--surface)}
+.socials-row svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:1.8}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--accent);color:var(--surface);
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;
+  padding:.85rem 1.6rem;border-radius:9999px;border:none;cursor:pointer;
+  transition:all .3s ease;box-shadow:0 6px 18px rgba(178,58,42,0.28);
+  animation:pulse 2.6s ease-in-out infinite;
+}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 12px 28px rgba(178,58,42,0.36)}
+@keyframes pulse{
+  0%,100%{box-shadow:0 6px 18px rgba(178,58,42,0.28),0 0 0 0 rgba(178,58,42,0.4)}
+  70%{box-shadow:0 6px 18px rgba(178,58,42,0.28),0 0 0 14px rgba(178,58,42,0)}
+}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:transparent;color:var(--primary);
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:.95rem;
+  padding:.8rem 1.4rem;border-radius:9999px;border:1.5px solid var(--border);
+  transition:all .25s ease;cursor:pointer;
+}
+.btn-outline:hover{border-color:var(--primary);background:var(--surface)}
+.hamburger{display:none;background:none;border:none;color:var(--primary);font-size:1.4rem;cursor:pointer}
+
+/* Hero */
+.hero{
+  min-height:92vh;
+  position:relative;
+  display:flex;align-items:center;
+  padding:9rem 0 5rem;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(160deg, rgba(251,245,236,0.96) 0%, rgba(245,235,216,0.88) 100%),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover no-repeat;
+  filter:sepia(0.18) saturate(1.08);
+  z-index:-1;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--surface);padding:.45rem 1rem;border-radius:9999px;
+  font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:var(--secondary);
+  letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--border);
+  margin-bottom:1.5rem;
+  opacity:0;transform:translateY(16px);animation:fadeUp .8s ease forwards;animation-delay:.1s;
+}
+.hero-eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.hero h1{margin-bottom:1.4rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s ease forwards;animation-delay:.25s}
+.hero-subtitle{
+  font-size:1.2rem;color:var(--muted);max-width:540px;margin-bottom:2.4rem;line-height:1.6;
+  opacity:0;transform:translateY(20px);animation:fadeUp .8s ease forwards;animation-delay:.4s;
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:fadeUp .8s ease forwards;animation-delay:.55s}
+.btn-primary.btn-hero{padding:1.15rem 2.1rem;font-size:1.05rem}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.hero-card{
+  position:relative;background:var(--surface);
+  border-radius:24px;padding:0;overflow:hidden;
+  box-shadow:0 1px 3px rgba(58,32,20,0.08),0 24px 60px rgba(58,32,20,0.12);
+  opacity:0;transform:translateY(20px);animation:fadeUp .9s ease forwards;animation-delay:.5s;
+}
+.hero-card img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(0.12) saturate(1.1)}
+.hero-card-tag{
+  position:absolute;top:1.2rem;left:1.2rem;
+  background:var(--accent);color:var(--surface);
+  font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:.95rem;
+  padding:.5rem 1rem;border-radius:9999px;
+  box-shadow:0 6px 14px rgba(178,58,42,0.28);
+}
+.hero-stats{
+  position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;
+  background:rgba(251,245,236,0.94);backdrop-filter:blur(8px);
+  border-radius:14px;padding:1rem 1.2rem;
+  display:flex;justify-content:space-around;gap:.5rem;
+}
+.stat{text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;color:var(--primary);display:block;line-height:1}
+.stat-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:.25rem}
+
+/* Sections */
+section{padding:clamp(4rem,8vw,7rem) 0;position:relative}
+.section-eyebrow{
+  display:inline-block;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;color:var(--accent);
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;
+}
+.section-head{margin-bottom:3.5rem;max-width:680px}
+.section-head p{margin-top:.8rem;font-size:1.08rem}
+
+/* About */
+.about{background:var(--surface-2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:20px;aspect-ratio:5/6;object-fit:cover;filter:sepia(0.12) saturate(1.1);box-shadow:0 1px 3px rgba(0,0,0,0.08),0 16px 40px rgba(58,32,20,0.12)}
+.about-img::before{
+  content:'';position:absolute;top:-18px;left:-18px;right:30px;bottom:30px;
+  border:2px solid var(--accent);border-radius:20px;z-index:-1;
+}
+.about-text h2{margin-bottom:1.5rem}
+.about-text p{margin-bottom:1.1rem;color:var(--primary-soft);font-size:1.06rem;line-height:1.7}
+.about-quote{
+  border-left:3px solid var(--accent);padding:.6rem 0 .6rem 1.4rem;
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:var(--primary);
+  margin-top:1.4rem;
+}
+
+/* Menu */
+.menu{position:relative}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.menu-card{
+  background:var(--surface);border-radius:18px;padding:1.8rem;
+  border:1px solid var(--border);
+  transition:all .35s cubic-bezier(0.16,1,0.3,1);
+  position:relative;overflow:hidden;
+}
+.menu-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 1px 3px rgba(0,0,0,0.08),0 18px 40px rgba(58,32,20,0.1);border-color:transparent}
+.menu-card:hover::before{transform:scaleX(1)}
+.menu-card-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.5rem}
+.menu-card-head h3{margin:0;font-size:1.3rem}
+.menu-price{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:var(--accent);white-space:nowrap}
+.menu-card p{font-size:.97rem;line-height:1.6}
+.menu-card-cat{font-family:'DM Sans',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--secondary);font-weight:600;margin-bottom:.6rem}
+.menu-foot{margin-top:2rem;text-align:center;font-size:.92rem;color:var(--muted);font-style:italic}
+
+/* Hours */
+.hours{background:var(--primary);color:var(--surface);position:relative;overflow:hidden}
+.hours::before{
+  content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(178,58,42,0.18) 0%,transparent 65%);
+}
+.hours::after{
+  content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(200,149,74,0.13) 0%,transparent 65%);
+}
+.hours h2{color:var(--surface)}
+.hours .section-eyebrow{color:var(--gold)}
+.hours .section-head p{color:rgba(251,245,236,0.75)}
+.hours-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start;position:relative;z-index:1}
+.hours-list{display:flex;flex-direction:column;gap:.7rem}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-bottom:1px solid rgba(251,245,236,0.12);font-size:1.06rem}
+.hours-row.today{background:linear-gradient(90deg,rgba(178,58,42,0.18) 0%,transparent 100%);padding-left:1rem;padding-right:1rem;border-radius:8px;border-bottom-color:transparent}
+.hours-day{font-weight:600;color:var(--surface)}
+.hours-time{color:rgba(251,245,236,0.75);font-family:'DM Sans',sans-serif}
+.hours-time.closed{color:var(--accent);font-weight:600}
+.hours-cta-card{
+  background:rgba(251,245,236,0.06);border:1px solid rgba(251,245,236,0.18);
+  border-radius:18px;padding:2rem;backdrop-filter:blur(8px);
+}
+.hours-cta-card h3{color:var(--surface);font-size:1.4rem;margin-bottom:.7rem}
+.hours-cta-card p{color:rgba(251,245,236,0.75);font-size:.95rem;margin-bottom:1.4rem}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.review-card{
+  background:var(--surface);border-radius:18px;padding:2rem 1.8rem;
+  border-top:3px solid var(--accent);position:relative;
+  transition:all .35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 1px 3px rgba(58,32,20,0.06);
+}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 1px 3px rgba(58,32,20,0.06),0 18px 40px rgba(58,32,20,0.1)}
+.review-card::before{
+  content:'\201C';position:absolute;top:-18px;right:1.4rem;
+  font-family:'Fraunces',serif;font-size:5rem;color:var(--accent);opacity:.22;line-height:1;
+}
+.review-stars{color:var(--gold);font-size:1.05rem;margin-bottom:.8rem;letter-spacing:.1em}
+.review-card p{color:var(--primary-soft);font-size:1rem;line-height:1.65;margin-bottom:1.3rem;font-style:italic;font-family:'Fraunces',serif}
+.review-name{font-weight:600;color:var(--primary);font-size:.97rem}
+.review-date{font-size:.82rem;color:var(--muted);margin-top:.18rem}
+
+/* Map */
+.map-section{padding-bottom:0}
+.map-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(58,32,20,0.08),0 20px 48px rgba(58,32,20,0.1);
+}
+.map-info{background:var(--surface);padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.map-info h2{margin-bottom:1.4rem}
+.map-info-row{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.map-info-row:last-child{border-bottom:none}
+.map-info-icon{
+  flex-shrink:0;width:42px;height:42px;border-radius:12px;
+  background:var(--surface-2);display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:700;color:var(--accent);font-size:1.05rem;
+}
+.map-info-text strong{display:block;color:var(--primary);font-weight:600;margin-bottom:.18rem;font-size:.9rem}
+.map-info-text span,.map-info-text a{color:var(--muted);font-size:.97rem}
+.map-info-text a:hover{color:var(--accent)}
+.map-frame{position:relative;min-height:480px}
+.map-frame iframe{width:100%;height:100%;border:none;display:block}
+
+/* Final CTA band */
+.final-cta{
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-hover) 100%);
+  color:var(--surface);text-align:center;position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 50%,rgba(255,255,255,0.12) 0%,transparent 50%);
+}
+.final-cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.final-cta h2{color:var(--surface);margin-bottom:1.1rem;font-size:clamp(2.2rem,4vw,3.4rem)}
+.final-cta p{color:rgba(255,255,255,0.85);font-size:1.15rem;margin-bottom:2rem}
+.final-cta .btn-primary{background:var(--surface);color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,0.18);animation:none;padding:1.15rem 2.4rem;font-size:1.05rem}
+.final-cta .btn-primary:hover{background:var(--bg);color:var(--accent-hover);transform:translateY(-3px)}
+
+/* Footer */
+footer{background:#1F0F09;color:rgba(251,245,236,0.7);padding:4.5rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-col h4{color:var(--surface);font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;margin-bottom:1.2rem}
+.footer-col p,.footer-col li{font-size:.93rem;line-height:1.85;color:rgba(251,245,236,0.65)}
+.footer-col li{list-style:none}
+.footer-col a:hover{color:var(--surface)}
+.footer-brand .logo{color:var(--surface);margin-bottom:1rem}
+.footer-brand p{max-width:280px;margin-bottom:1.4rem}
+.footer-bottom{border-top:1px solid rgba(251,245,236,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;font-size:.82rem;color:rgba(251,245,236,0.5)}
+.footer-bottom a{color:rgba(251,245,236,0.7)}
+.footer-bottom a:hover{color:var(--surface)}
+.footer-socials{display:flex;gap:.6rem;margin-top:.8rem}
+.footer-socials a{width:36px;height:36px;border-radius:50%;background:rgba(251,245,236,0.08);display:inline-flex;align-items:center;justify-content:center;transition:all .25s}
+.footer-socials a:hover{background:var(--accent);transform:translateY(-2px)}
+.footer-socials svg{width:16px;height:16px;stroke:rgba(251,245,236,0.7);fill:none;stroke-width:1.8}
+.footer-socials a:hover svg{stroke:var(--surface)}
+
+/* Sticky mobile CTA */
+.sticky-cta{
+  display:none;
+  position:fixed;bottom:1rem;left:1rem;right:1rem;z-index:99;
+  background:var(--accent);color:var(--surface);
+  padding:1rem 1.4rem;border-radius:14px;
+  align-items:center;justify-content:space-between;gap:1rem;
+  box-shadow:0 12px 32px rgba(178,58,42,0.4);
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;
+}
+.sticky-cta::after{content:'\2192';font-size:1.2rem;margin-left:auto}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:all .8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media(max-width:920px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-card{max-width:380px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-img::before{display:none}
+  .menu-grid{grid-template-columns:1fr}
+  .hours-grid{grid-template-columns:1fr;gap:2rem}
+  .reviews-grid{grid-template-columns:1fr}
+  .map-wrap{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .sticky-cta{display:flex}
+  .hero{padding:7rem 0 3rem;min-height:auto}
+}
+@media(max-width:540px){
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{padding:.85rem .9rem}
+  .stat-num{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo">
+        <span class="logo-mark">N</span>Newark's Country Kitchen
+      </a>
+      <div class="nav-links">
+        <a href="#about">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#hours">Hours</a>
+        <a href="#visit">Visit</a>
+        <div class="socials-row">
+          <a href="https://www.facebook.com/newarkcountrykitchen" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+        <a href="tel:8156959599" class="btn-primary">Call to Order</a>
+      </div>
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">Family-owned since 1990</span>
+        <h1>Real food. Real recipes. Real Newark.</h1>
+        <p class="hero-subtitle">Thirty-five years of breakfast plates, lunch counter chatter, and home-cooked dinners on State Route 71. Walk in any morning, you'll smell why folks keep coming back.</p>
+        <div class="hero-ctas">
+          <a href="tel:8156959599" class="btn-primary btn-hero">Call to Order &#8594;</a>
+          <a href="#menu" class="btn-outline">See the Menu</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <!-- REPLACE WITH REAL PHOTO of the diner interior or signature plate -->
+        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80" alt="Plate of country diner breakfast">
+        <div class="hero-card-tag">Open at 6am</div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">35+</span><span class="stat-lbl">Years</span></div>
+          <div class="stat"><span class="stat-num">6am</span><span class="stat-lbl">Doors Open</span></div>
+          <div class="stat"><span class="stat-num">230+</span><span class="stat-lbl">Reviews</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <!-- REPLACE WITH REAL PHOTO of the kitchen, owner, or front of the diner -->
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80" alt="Cook at the griddle">
+      </div>
+      <div class="about-text reveal">
+        <span class="section-eyebrow">Our Story</span>
+        <h2>A home-cooked corner of Big Grove Township.</h2>
+        <p>Newark's Country Kitchen has been family-owned and family-run since 1990. We're the diner you stop at on the way back from the farm. The one where the coffee's hot before you sit down and the eggs come out the way you ordered them.</p>
+        <p>Nothing fancy. Nothing fussy. Just the kind of plate you wish your grandma still made for you on a Saturday morning &mdash; biscuits and sausage gravy, pancakes the size of the plate, ham steak with two over easy.</p>
+        <div class="about-quote">&ldquo;Pull up a chair. Coffee's on us while you decide.&rdquo;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">What's cooking</span>
+      <h2>Plates folks come back for.</h2>
+      <p>Breakfast served all day. Specials on a chalkboard up front. Daily soups simmering by 11.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Breakfast</div>
+        <div class="menu-card-head">
+          <h3>Country Breakfast</h3>
+          <span class="menu-price">$11 &#10038;</span>
+        </div>
+        <p>Two eggs any style, hash browns, choice of bacon, sausage, or ham, and toast. The plate that built the place.</p>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Breakfast</div>
+        <div class="menu-card-head">
+          <h3>Biscuits &amp; Gravy</h3>
+          <span class="menu-price">$8 &#10038;</span>
+        </div>
+        <p>House sausage gravy over buttermilk biscuits, the way it should be. Add two eggs for $2.</p>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Lunch</div>
+        <div class="menu-card-head">
+          <h3>Hot Beef Sandwich</h3>
+          <span class="menu-price">$13 &#10038;</span>
+        </div>
+        <p>Slow-roasted beef over white bread, mashed potatoes, and brown gravy on the whole plate. Comfort, full stop.</p>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Lunch</div>
+        <div class="menu-card-head">
+          <h3>Country Cheeseburger</h3>
+          <span class="menu-price">$10 &#10038;</span>
+        </div>
+        <p>Quarter pound, hand-pattied, American cheese, on a toasted bun with fries. Add bacon for $2.</p>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Dinner</div>
+        <div class="menu-card-head">
+          <h3>Fried Chicken Dinner</h3>
+          <span class="menu-price">$15 &#10038;</span>
+        </div>
+        <p>Four pieces, mashed potatoes and gravy, vegetable of the day, and a roll. Ask about Wednesday's special.</p>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-card-cat">Dinner</div>
+        <div class="menu-card-head">
+          <h3>Pot Roast Plate</h3>
+          <span class="menu-price">$14 &#10038;</span>
+        </div>
+        <p>Slow-braised beef with carrots, onions, and potatoes. Served Tuesday and Thursday until we run out.</p>
+      </div>
+    </div>
+    <p class="menu-foot">&#10038; Prices shown are placeholders &mdash; confirm with owner before launch.</p>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours" id="hours">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Stop by</span>
+      <h2>Hours of operation.</h2>
+      <p>Closed Mondays so the cooks can breathe. Open every other day, early.</p>
+    </div>
+    <div class="hours-grid">
+      <div class="hours-list reveal">
+        <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time closed">Closed</span></div>
+        <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">6:00 AM &mdash; 8:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">6:00 AM &mdash; 8:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">6:00 AM &mdash; 8:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">6:00 AM &mdash; 8:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">6:00 AM &mdash; 3:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">6:00 AM &mdash; 3:00 PM</span></div>
+      </div>
+      <div class="hours-cta-card reveal">
+        <h3>Call ahead for pickup.</h3>
+        <p>Big order coming? Give us a call so the cooks can get a head start. Carryout is welcome any time we're open.</p>
+        <a href="tel:8156959599" class="btn-primary" style="background:var(--surface);color:var(--accent);animation:none">Call (815) 695-9599</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">From the regulars</span>
+      <h2>People keep coming back.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Best country breakfast around. Hash browns are crispy, eggs cooked right, and the waitstaff knows my name.</p>
+        <div class="review-name">Karen B.</div>
+        <div class="review-date">Local regular</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Real home cooking. Drove out from Yorkville on a tip from a buddy. Got biscuits and gravy and a cup of coffee for almost nothing. Came back the next weekend.</p>
+        <div class="review-name">Tom R.</div>
+        <div class="review-date">Yorkville</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <p>Friendly people, good portions, prices that make sense. Pot roast Thursday is the move.</p>
+        <div class="review-name">Marcus D.</div>
+        <div class="review-date">Sandwich</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="visit">
+  <div class="container">
+    <div class="map-wrap reveal">
+      <div class="map-info">
+        <span class="section-eyebrow">Find us</span>
+        <h2>307 E State Route 71.</h2>
+        <div class="map-info-row">
+          <div class="map-info-icon">A</div>
+          <div class="map-info-text"><strong>Address</strong><span>307 E State Rt 71, Newark, IL 60541</span></div>
+        </div>
+        <div class="map-info-row">
+          <div class="map-info-icon">P</div>
+          <div class="map-info-text"><strong>Phone</strong><a href="tel:8156959599">(815) 695-9599</a></div>
+        </div>
+        <div class="map-info-row">
+          <div class="map-info-icon">H</div>
+          <div class="map-info-text"><strong>Today</strong><span>Open 6:00 AM &mdash; 8:00 PM (Tue&ndash;Fri)</span></div>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=307+E+State+Route+71+Newark+IL+60541&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Newark's Country Kitchen"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner reveal">
+      <h2>Hungry? Pull up a chair.</h2>
+      <p>Or call ahead and we'll have it ready when you walk in.</p>
+      <a href="tel:8156959599" class="btn-primary">Call (815) 695-9599</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#" class="logo"><span class="logo-mark">N</span>Newark's Country Kitchen</a>
+        <p>Home-cooked breakfast, lunch, and dinner on Route 71 since 1990.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/newarkcountrykitchen" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#hours">Hours</a></li>
+          <li><a href="#visit">Map &amp; Directions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon &mdash; Closed</li>
+          <li>Tue&ndash;Fri 6am&ndash;8pm</li>
+          <li>Sat 6am&ndash;3pm</li>
+          <li>Sun 6am&ndash;3pm</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8156959599">(815) 695-9599</a></li>
+          <li>307 E State Rt 71</li>
+          <li>Newark, IL 60541</li>
+        </ul>
+        <a href="tel:8156959599" class="btn-primary" style="margin-top:1rem;font-size:.88rem;padding:.65rem 1.2rem;animation:none">Call Now</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Newark's Country Kitchen. Home-cooked since 1990.</span>
+      <span>Website by <a href="https://johnathon-builds.vercel.app" target="_blank" rel="noopener">Johnathon Builds</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:8156959599" class="sticky-cta">Call (815) 695-9599</a>
+
+<script>
+// Sticky header
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>80)});
+// Reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
